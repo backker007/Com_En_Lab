@@ -12,7 +12,7 @@ BLUE_PIN = 4
 GPIO.setmode(GPIO.BCM)
 GPIO.setwarnings(False)
 GPIO.setup(RED_PIN, GPIO.OUT)
-GPIO.setup(GREEN_PIN, GPIO.OUT)
+GPIO.setup(GREEN_PIN, GPIO.OUT) 
 GPIO.setup(BLUE_PIN, GPIO.OUT)
 GPIO.setup(SW, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 # ตั้งค่า PWM สำหรับการควบคุมสี
