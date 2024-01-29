@@ -1,17 +1,19 @@
-import RPi.GPIO as GPIO
-import time
-SW1 = 27 
-SW2 = 17
-GPIO.setmode(GPIO.BCM)
-GPIO.setup(SW1, GPIO.IN, pull_up_down=GPIO.PUD_UP)
-GPIO.setup(SW2, GPIO.IN, pull_up_down=GPIO.PUD_UP)
+import drivers
+from time import sleep
+display = drivers.Lcd()
+display.lcd_clear()
 try:
- while True:
-    if GPIO.wait_for_edge(SW1, GPIO.FALLING):
-        print("SW1 Pressed")
-    elif GPIO.wait_for_edge(SW2, GPIO.FALLING): 
-        print("SW2 Pressed") 
-        time.sleep(0.3)
+while True:
+ print("Writing to LCD !!!")
+ display.lcd_display_string("Lab7-LCD", 1)
+ display.lcd_display_string("Hello World", 2)
+ sleep(2)
+ 
+ display.lcd_display_string("I am Engineer", 1)
+ display.lcd_display_string("0123456789abcdef", 2)
+ sleep(2)
+display.lcd_clear()
+sleep(2)
 except KeyboardInterrupt:
- GPIO.cleanup()
- print("\nBye..")
+display.lcd_clear()
+print("\nBye...")
